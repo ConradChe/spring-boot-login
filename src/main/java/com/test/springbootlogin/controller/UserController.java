@@ -47,4 +47,9 @@ public class UserController {
            return "regist";
        }
     }
+
+    @RequestMapping("/login.html")
+    public String login(){
+        return "login";
+    }
 }
