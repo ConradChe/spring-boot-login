@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
     @Select("select * from user where name=#{name}")
-    public User find(String name);
+    User find(String name);
 
     @Select("insert into user (name,password) values(#{name},#{password})")
-    public void insert(User u);
+    void insert(User u);
 }
