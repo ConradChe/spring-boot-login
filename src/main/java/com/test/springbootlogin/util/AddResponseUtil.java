@@ -1,13 +1,13 @@
 package com.test.springbootlogin.util;
 
-import com.kiegame.business.bean.ApiResponse;
+import com.test.springbootlogin.bean.ApiResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AddResponseUtil {
 
-    public static ApiResponse addResult(Integer result,String id){
+    public static ApiResponse addResult(Integer result, String id){
         if (result > 0) {
             List<String> resultList = new ArrayList<>();
             resultList.add(id);
