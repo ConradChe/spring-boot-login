@@ -17,39 +17,41 @@ public class UserController {
     private UserMapper userMapper;
 
     @RequestMapping("/login")
-    public String findUser(User user,Model m, Map<String,Object> map, HttpSession session){
+    public String findUser(User user, Model m, Map<String, Object> map, HttpSession session) {
         User u = userMapper.find(user.getName());
         if (u != null && u.getPassword().equals(user.getPassword())) {
-            m.addAttribute("u",u);
-            session.setAttribute("user",user);
+            m.addAttribute("u", u);
+            session.setAttribute("user", user);
             return "success";
-        }else{
-            map.put("msg","用户名或密码错误");
+        } else {
+            map.put("msg", "用户名或密码错误");
             return "login";
         }
     }
+
     @ResponseBody
     @RequestMapping("/checkemail")
-    public String checkemail(String name){
+    public String checkemail(String name) {
         User u = userMapper.find(name);
-        if(u!=null){
+        if (u != null) {
             return "该邮箱已被注册";
         }
         return "";
     }
+
     @RequestMapping("insertUser")
-    public String insertUser(User u,Model m){
-       if(userMapper.find(u.getName())==null) {
-           userMapper.insert(u);
-           return "login";
-       }else {
-           m.addAttribute("msg","注册失败！");
-           return "regist";
-       }
+    public String insertUser(User u, Model m) {
+        if (userMapper.find(u.getName()) == null) {
+            userMapper.insert(u);
+            return "login";
+        } else {
+            m.addAttribute("msg", "注册失败！");
+            return "regist";
+        }
     }
 
     @RequestMapping("/login.html")
-    public String login(){
+    public String login() {
         return "login";
     }
 }

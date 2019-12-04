@@ -1,58 +1,59 @@
 <!DOCTYPE HTML>
 <html lang="en-US" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>注册</title>
-	<link rel="stylesheet" type="text/css" href="/static/css/base.css"
-		  th:href="@{/static/css/base.css}" media="all" />
-	<link rel="stylesheet" type="text/css" href="/static/css/register.css"
-		  th:href="@{/static/css/register.css}" media="all" />
-	<script src="/static/js/jquery-3.3.1.min.js"
-			th:src="@{/static/js/jquery-3.3.1.min.js}"></script>
-	<script src="/static/js/register.js"
-			th:src="@{/static/js/register.js}"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/base.css"
+          th:href="@{/static/css/base.css}" media="all"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/register.css"
+          th:href="@{/static/css/register.css}" media="all"/>
+    <script src="/static/js/jquery-3.3.1.min.js"
+            th:src="@{/static/js/jquery-3.3.1.min.js}"></script>
+    <script src="/static/js/register.js"
+            th:src="@{/static/js/register.js}"></script>
 </head>
 <body>
 <div class="page">
-	<header id="header">
-		<hgrounp class="white">
-			<h1></h1>
-			<h2></h2>
-		</hgrounp>
-	</header>	
-	<section class="demo">
+    <header id="header">
+        <hgrounp class="white">
+            <h1></h1>
+            <h2></h2>
+        </hgrounp>
+    </header>
+    <section class="demo">
 
-		<div class="login clearfix">
-		  <h2>Sign Up Form</h2>
-		  <p>with steps</p>
-		  <form method="post" action="insertUser" id="form-control" class="register" >
-				<div class="control-round" id="control-round">
-					<label for="email" class="active">1</label>
-					<label for="password">2</label>
-					<label for="vpassword">3</label>
-				</div>
-				<div class="control-group">
-					<input  type="text"  name="name" id="email"  placeholder="Email Address" onchange="checkemail()">
-				</div>
-				<div class="control-group">
-					<input  type="password"  name="password" id="password" placeholder="Password">
-				</div>
-				<div class="control-group">
-					<input  type="password"  name="vpassword" id="vpassword" placeholder="Verify Password">
-				</div>
-			  <p th:text="${msg}" th:if="${not #strings.isEmpty(msg)}" id="errorMessage" style="color: red;font-size: 15px"></p>
-				<div class="form-actions">
-					<button class="btn" type="submit" >Sign Up</button>
-					<button class="btn" type="button" id="clear">Clear</button>
-				</div>
-		  </form>
-		</div>		
-	
-	</section>
+        <div class="login clearfix">
+            <h2>Sign Up Form</h2>
+            <p>with steps</p>
+            <form method="post" action="insertUser" id="form-control" class="register">
+                <div class="control-round" id="control-round">
+                    <label for="email" class="active">1</label>
+                    <label for="password">2</label>
+                    <label for="vpassword">3</label>
+                </div>
+                <div class="control-group">
+                    <input type="text" name="name" id="email" placeholder="Email Address" onchange="checkemail()">
+                </div>
+                <div class="control-group">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="control-group">
+                    <input type="password" name="vpassword" id="vpassword" placeholder="Verify Password">
+                </div>
+                <p th:text="${msg}" th:if="${not #strings.isEmpty(msg)}" id="errorMessage"
+                   style="color: red;font-size: 15px"></p>
+                <div class="form-actions">
+                    <button class="btn" type="submit">Sign Up</button>
+                    <button class="btn" type="button" id="clear">Clear</button>
+                </div>
+            </form>
+        </div>
+
+    </section>
 </div>
-<div style="text-align:center;clear:both">
-<p>适用浏览器：FireFox、Chrome、Safari、Opera、傲游、搜狗. 不支持IE8、360、世界之窗。</p>
-<p>来源：<a href="http://www.w3cplus.com/" target="_blank">w3cplus</a></p>
-</div>
+<!--<div style="text-align:center;clear:both">-->
+<!--<p>适用浏览器：FireFox、Chrome、Safari、Opera、傲游、搜狗. 不支持IE8、360、世界之窗。</p>-->
+<!--<p>来源：<a href="http://www.w3cplus.com/" target="_blank">w3cplus</a></p>-->
+<!--</div>-->
 </body>
 </html>
