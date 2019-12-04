@@ -1,6 +1,5 @@
 package com.test.springbootlogin.util;
 
-import com.haitsoft.framework.data.context.DataContext;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -10,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static java.util.regex.Pattern.*;
 
 /**
  * 字符串判断工具
@@ -135,7 +136,7 @@ public class StringUtil {
 		if (obj == null) {
 			return false;
 		}
-		Pattern p = Pattern.compile("^1\\d{10}$");
+		Pattern p = compile("^1\\d{10}$");
 		Matcher m = p.matcher(obj);
 		return m.matches();
 	}
@@ -150,7 +151,7 @@ public class StringUtil {
 		if (obj == null) {
 			return false;
 		}
-		Pattern p = Pattern.compile("^(0[0-9]{2,3}\\-)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?$");
+		Pattern p = compile("^(0[0-9]{2,3}\\-)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?$");
 		Matcher m = p.matcher(obj);
 		return m.matches();
 	}
@@ -165,7 +166,7 @@ public class StringUtil {
 		if (obj == null) {
 			return false;
 		}
-		Pattern p = Pattern.compile("^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$");
+		Pattern p = compile("^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$");
 		Matcher m = p.matcher(obj);
 		return m.matches();
 	}
@@ -272,40 +273,9 @@ public class StringUtil {
 		return newName;
 	}
 
-	/**
-	 * 用于方便替换item中的数据字典元素
-	 * 
-	 * @param item
-	 * @param fieldName
-	 * @param dictCode
-	 */
-	public static void changeDict(Map item, String fieldName, String dictCode) {
-		if (item == null || item.get(fieldName) == null || DataContext.getDict(dictCode) == null) {
-			return;
-		}
-		item.put(fieldName + "_text", DataContext.getDict(dictCode, item.get(fieldName)));
-	}
-	
-	/**
-	 * 用于方便替换item中的数据字典元素
-	 * 
-	 * @param item
-	 * @param fieldName
-	 * @param dictCode
-	 */
-	public static String getDictValue(Map item, String fieldName, String dictCode) {
-		if (item == null || item.get(fieldName) == null || DataContext.getDict(dictCode) == null) {
-			return "";
-		}
-		return DataContext.getDict(dictCode, item.get(fieldName));
-	}
 
-	public static String getDictValue(int fieldVal, String dictCode) {
-		if (DataContext.getDict(dictCode) == null) {
-			return "";
-		}
-		return DataContext.getDict(dictCode, fieldVal);
-	}
+	
+
 
 	/**
 	 * 将单个参数值替换为多个参数值
@@ -337,11 +307,11 @@ public class StringUtil {
 	/**
 	 * 判断是否为数字
 	 * 
-	 * @param str
+	 * @param
 	 * @return
 	 */
 	public static boolean isNumeric(String text) {
-		Pattern pattern = Pattern.compile("[+-]?\\d*[.]?\\d*");
+		Pattern pattern = compile("[+-]?\\d*[.]?\\d*");
 		Matcher isNum = pattern.matcher(text);
 		if (!isNum.matches()) {
 			return false;
@@ -356,7 +326,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static boolean isChinese(String text) {
-		Pattern pat = Pattern.compile("[\u4e00-\u9fa5]*");
+		Pattern pat = compile("[\u4e00-\u9fa5]*");
 		Matcher matcher = pat.matcher(text);
 		if (!matcher.matches()) {
 			return false;
