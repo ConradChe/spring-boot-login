@@ -4,13 +4,14 @@ package com.test.springbootlogin.util;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static java.util.regex.Pattern.*;
 
 /**
  * 字符串判断工具
@@ -136,7 +137,7 @@ public class StringUtil {
 		if (obj == null) {
 			return false;
 		}
-		Pattern p = compile("^1\\d{10}$");
+		Pattern p = Pattern.compile("^1\\d{10}$");
 		Matcher m = p.matcher(obj);
 		return m.matches();
 	}
@@ -151,7 +152,7 @@ public class StringUtil {
 		if (obj == null) {
 			return false;
 		}
-		Pattern p = compile("^(0[0-9]{2,3}\\-)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?$");
+		Pattern p = Pattern.compile("^(0[0-9]{2,3}\\-)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?$");
 		Matcher m = p.matcher(obj);
 		return m.matches();
 	}
@@ -166,7 +167,7 @@ public class StringUtil {
 		if (obj == null) {
 			return false;
 		}
-		Pattern p = compile("^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$");
+		Pattern p = Pattern.compile("^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$");
 		Matcher m = p.matcher(obj);
 		return m.matches();
 	}
@@ -273,10 +274,6 @@ public class StringUtil {
 		return newName;
 	}
 
-
-	
-
-
 	/**
 	 * 将单个参数值替换为多个参数值
 	 * 
@@ -307,11 +304,11 @@ public class StringUtil {
 	/**
 	 * 判断是否为数字
 	 * 
-	 * @param
+	 * @param text
 	 * @return
 	 */
 	public static boolean isNumeric(String text) {
-		Pattern pattern = compile("[+-]?\\d*[.]?\\d*");
+		Pattern pattern = Pattern.compile("[+-]?\\d*[.]?\\d*");
 		Matcher isNum = pattern.matcher(text);
 		if (!isNum.matches()) {
 			return false;
@@ -326,7 +323,7 @@ public class StringUtil {
 	 * @return
 	 */
 	public static boolean isChinese(String text) {
-		Pattern pat = compile("[\u4e00-\u9fa5]*");
+		Pattern pat = Pattern.compile("[\u4e00-\u9fa5]*");
 		Matcher matcher = pat.matcher(text);
 		if (!matcher.matches()) {
 			return false;
@@ -459,4 +456,45 @@ public class StringUtil {
 		}
 	}
 
+
+	/**
+	 * 判断Ip格式是否正确
+	 * @param ip
+	 * @return
+	 */
+	public static boolean isIp(String ip) {
+		if (ip == null) {
+			return false;
+		}
+		boolean flag = ip.matches("([1-9]|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])(\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])){3}");
+		return flag;
+	}
+
+	/**
+	 * 判断对象是否为空
+	 * @param obj
+	 * @return
+	 */
+	public static boolean requestParamsIsEmpty(Object obj){
+		if(obj instanceof String &&"".equals(((String) obj).trim())){
+			return true;
+		}
+		return Objects.isNull(obj);
+	}
+
+	/**
+	 * 获取当前时间
+	 * @return
+	 */
+	public static String getNowTime(String format){
+		return LocalDateTime.now().format(DateTimeFormatter.ofPattern(format));
+	}
+
+	public static boolean isIdCard(String idCard){
+		if (idCard == null) {
+			return false;
+		}
+		boolean flag = idCard.matches("^[1-9]\\d{5}(18|19|20|(3\\d))\\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$");
+		return flag;
+	}
 }
