@@ -6,7 +6,9 @@
     </facet>
     <facet type="web" name="Web">
       <configuration>
-        <webroots />
+        <webroots>
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+        </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
@@ -95,6 +97,7 @@
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:4.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:popper.js:1.14.3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-servlet-api:8.0.36" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-starter:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.0" level="project" />

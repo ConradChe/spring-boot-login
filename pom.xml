@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-database</name>
 	<description>Demo project for Spring Boot</description>
+	<packaging>war</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -62,6 +63,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-servlet-api</artifactId>
+			<version>8.0.36</version>
+			<scope>provided</scope>
 		</dependency>
 		<!-- mybatis -->
 		<dependency>
