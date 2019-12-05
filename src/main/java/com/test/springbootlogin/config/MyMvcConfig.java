@@ -24,6 +24,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/index").setViewName("login");
         registry.addViewController("/main.html").setViewName("success");
         registry.addViewController("/register").setViewName("regist");
+        registry.addViewController("/write").setViewName("write");
     }
 
 

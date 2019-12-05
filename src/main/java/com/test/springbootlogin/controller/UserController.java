@@ -22,7 +22,7 @@ public class UserController {
         if (u != null && u.getPassword().equals(user.getPassword())) {
             m.addAttribute("u", u);
             session.setAttribute("user", user);
-            return "success";
+            return "index";
         } else {
             map.put("msg", "用户名或密码错误");
             return "login";
@@ -50,8 +50,4 @@ public class UserController {
         }
     }
 
-    @RequestMapping("/login.html")
-    public String login() {
-        return "login";
-    }
 }
